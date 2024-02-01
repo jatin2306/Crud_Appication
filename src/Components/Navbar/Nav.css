@@ -1,0 +1,10 @@
+a{
+text-decoration: none;
+color: black;
+text-transform: none;
+font-size: 1.2rem;
+}
+.css-hip9hq-MuiPaper-root-MuiAppBar-root{
+  background: rgb(195,155,34);
+  background: linear-gradient(0deg, rgba(195,155,34,1) 45%, rgba(116,109,95,1) 100%);
+}
