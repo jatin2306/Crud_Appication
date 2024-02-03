@@ -4,7 +4,8 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 
 const Home = () => {
-  return (
+
+return (
   <Box className="main" >
     <Typography variant="h2">
       Welcome to Crud Application
@@ -13,8 +14,6 @@ const Home = () => {
     A appication where you can add data ,update data ,delete data and view data
     </Typography>
   </Box>
-
- 
   )
 }
 

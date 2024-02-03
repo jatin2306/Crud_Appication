@@ -14,8 +14,7 @@ function App() {
   <Route path='/' element={<Home/>}/>
   <Route path='/add' element={<Adduser/>}/>
   <Route path='/view' element={<ViewData/>}/>
-  <Route path='/update/:id' element={<UpdateForm/>}/>
-  
+  <Route path='/update' element={<UpdateForm/>}/>
 </Routes>
 </>
  

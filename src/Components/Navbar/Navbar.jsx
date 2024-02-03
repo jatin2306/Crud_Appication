@@ -22,13 +22,12 @@ const [list , setlist]=useState()
         </Link>
       </Typography>
          </Grid>
-         <Grid item xs={4}/>
-         <Grid xs={6}>
+         <Grid item xs={6}/>
+         <Grid xs={4}>
            <Tabs value={list} indicatorColor="primary" onChange={(e,val)=>setlist(val)}>
            <Tab label={<Link to="/">Home</Link>} />
            <Tab label={<Link to="/add">Add User</Link>} />
            <Tab label={<Link to="/view">ViewUser</Link>} />
-           <Tab label={<Link to="/update">UpdateUser</Link>} />
            <Tab label={<Link to="/delete">DeleteUser</Link>} />
            </Tabs>
        </Grid>
