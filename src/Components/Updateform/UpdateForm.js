@@ -13,17 +13,17 @@ const UpdateForm = ({apidata}) => {
   const updatevalues=({
     name : apidata?.name || '',
     age : apidata?.age || '',
-    gender : apidata.gender || ''
+    gender : apidata?.gender || ''
   })
   const [updatedata,setupdatedata]=useState(updatevalues)
-  const handleupdateonchange=(e)=>{
+  const handleupdateonchange=(e)=>{ 
 setupdatedata({...updatedata,[e.target.name]:e.target.value})
   }
   const handleupdatesubmit = async (e) => {
     e.preventDefault();
   
     try {
-      const response = await fetch(`https://crudcrud.com/api/2b05f7f1577a4fb5851fdd697301bb6f/unicorns/${apidata._id}`, {
+      const response = await fetch(`https://crudcrud.com/api/62c31c8c18b14b538ac1f3b9f497d654/unicorns/${apidata._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedata),
