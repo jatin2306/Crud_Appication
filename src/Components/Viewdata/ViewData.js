@@ -8,12 +8,15 @@ const [apidata,setapidata]=useState()
 const [openform,setopenform]=useState(false);
   const [data, setdata] = useState([])
   useEffect(() => {
-    fetch("https://crudcrud.com/api/ac37553892ce47239ed89725481ad1f2/unicorns").then((result) => {
+    fetch("https://crudcrud.com/api/2b05f7f1577a4fb5851fdd697301bb6f/unicorns").then((result) => {
       result.json().then((resp) => {
         setdata(resp)
       })
     })
   }, [])
+  const handledelete=()=>{
+    
+  }
 const handleupdate=(olddata)=>{
   setapidata(olddata)
 setopenform(true)
@@ -40,7 +43,7 @@ setopenform(true)
           <TableCell>{users.gender}</TableCell>
           <TableCell>
            <Button variant="contained" color="secondary" onClick={()=>handleupdate(users)}>Update</Button>
-            <Button variant="contained" color="secondary">
+            <Button variant="contained" color="secondary" onClick={handledelete}> 
               Delete
             </Button>
           </TableCell>

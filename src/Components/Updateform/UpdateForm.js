@@ -19,6 +19,27 @@ const UpdateForm = ({apidata}) => {
   const handleupdateonchange=(e)=>{
 setupdatedata({...updatedata,[e.target.name]:e.target.value})
   }
+  const handleupdatesubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const response = await fetch(`https://crudcrud.com/api/2b05f7f1577a4fb5851fdd697301bb6f/unicorns/${apidata._id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedata),
+      });
+  
+      if (response.ok) {
+        // Update UI or show success message
+        console.log("Data updated successfully");
+      } else {
+        // Handle error and update UI or show error message
+        console.error("Failed to update data");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
     return (
     <FormGroup>
     <Typography variant="h4">Update User</Typography>
@@ -35,7 +56,7 @@ setupdatedata({...updatedata,[e.target.name]:e.target.value})
       <Input id="gender" name="gender" onChange={handleupdateonchange} value={updatedata?.gender} />
     </FormControl>
     <FormControl>
-      <Button variant="contained" color="primary">
+      <Button variant="contained" color="primary" onClick={handleupdatesubmit}>
         Update User
       </Button>
     </FormControl>

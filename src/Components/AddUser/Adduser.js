@@ -37,9 +37,8 @@ const Adduser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const obj = { name: formdata.name, age: formdata.age, gender: formdata.gender };
-
     try {
-      const response = await fetch("https://crudcrud.com/api/ac37553892ce47239ed89725481ad1f2/unicorns", {
+      const response = await fetch("https://crudcrud.com/api/2b05f7f1577a4fb5851fdd697301bb6f/unicorns", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(obj),
