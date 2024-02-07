@@ -6,7 +6,8 @@ import {
   Input,
   Typography,
   Button,
-  // Alert
+  Alert,
+ 
 } from '@mui/material';
 
 const UpdateForm = ({apidata}) => {
@@ -15,29 +16,49 @@ const UpdateForm = ({apidata}) => {
     age : apidata?.age || '',
     gender : apidata?.gender || ''
   })
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
   const [updatedata,setupdatedata]=useState(updatevalues)
   const handleupdateonchange=(e)=>{ 
 setupdatedata({...updatedata,[e.target.name]:e.target.value})
   }
+  const handleSuccess = () => {
+    setSuccess(false);
+  };
+
+  const handleError = () => {
+    setError(false);
+  };
   const handleupdatesubmit = async (e) => {
     e.preventDefault();
   
     try {
-      const response = await fetch(`https://crudcrud.com/api/62c31c8c18b14b538ac1f3b9f497d654/unicorns/${apidata._id}`, {
+      const response = await fetch(`https://crudcrud.com/api/e892cfd1f26c40f3876891e8c67ddef0/unicorns/${apidata._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedata),
       });
   
       if (response.ok) {
-        // Update UI or show success message
+        setSuccess(true)
+        setTimeout(() => {
+          setSuccess(false)
+        }, 2000);
+      setupdatedata({
+        name:'',
+        age:'',
+        gender:''
+      })
         console.log("Data updated successfully");
       } else {
-        // Handle error and update UI or show error message
+    
         console.error("Failed to update data");
       }
     } catch (error) {
-      console.error("Error:", error);
+    setError(false)
+    setTimeout(() => {
+      setError(false)
+    }, 2000);
     }
   };
     return (
@@ -60,16 +81,16 @@ setupdatedata({...updatedata,[e.target.name]:e.target.value})
         Update User
       </Button>
     </FormControl>
-    {/* {success && (
-      <Alert variant="filled" severity="success" onClose={handleSuccess}>
-        Data added successfully.
-      </Alert>
-    )} */}
-    {/* {error && (
-      <Alert variant="filled" severity="error" onClose={handleError}>
-        Failed to add data.
-      </Alert>
-    )} */}
+    {success && (
+        <Alert variant="filled" severity="success" onClose={handleSuccess}>
+          Data Updated successfully.
+        </Alert>
+      )}
+      {error && (
+        <Alert variant="filled" severity="error" onClose={handleError}>
+          Failed to Update data.
+        </Alert>
+      )}
   </FormGroup>
   )
 }
