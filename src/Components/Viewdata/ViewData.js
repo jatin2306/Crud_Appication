@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material'
 import './ViewData.css'
-import UpdateForm from '../Updateform/UpdateForm'
+import { useNavigate } from 'react-router'
 
 const ViewData = () => {
-const [apidata,setapidata]=useState()
-const [openform,setopenform]=useState(false);
+
+const navigate =useNavigate()
   const [data, setdata] = useState([])
   useEffect(() => {
-    fetch("https://crudcrud.com/api/e892cfd1f26c40f3876891e8c67ddef0/unicorns").then((result) => {
+    fetch("https://crudcrud.com/api/caeab3327418480f81c57a25edf8d9d7/unicorns").then((result) => {
       result.json().then((resp) => {
         setdata(resp)
       })
     })
   },[])
   const handledelete=(userid)=>{
-    fetch(`https://crudcrud.com/api/e892cfd1f26c40f3876891e8c67ddef0/unicorns/${userid}`, {
+    fetch(`https://crudcrud.com/api/caeab3327418480f81c57a25edf8d9d7/unicorns/${userid}`, {
       method: "DELETE"
     }).then(() => {
       const updatedData = data.filter(users => users._id !== userid);
@@ -24,13 +24,10 @@ const [openform,setopenform]=useState(false);
   }
   
 const handleupdate=(olddata)=>{
-  setapidata(olddata)
-setopenform(true)
+navigate('/update',{state : olddata})
 }
   return (
-<>
-{openform? (<UpdateForm apidata={apidata}/>):
-(    <Table >
+    <Table >
   <TableHead >
     <TableRow>
       <TableCell>Name</TableCell>
@@ -59,11 +56,7 @@ setopenform(true)
     }
   </TableBody>
 
-</Table>)}
-
-
-
-</>
+</Table>
   )
 }
 export default ViewData

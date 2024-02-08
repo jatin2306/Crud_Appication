@@ -7,14 +7,16 @@ import {
   Typography,
   Button,
   Alert,
- 
 } from '@mui/material';
+import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 
-const UpdateForm = ({apidata}) => {
+const UpdateForm = () => {
+  const uselocation = useLocation()
   const updatevalues=({
-    name : apidata?.name || '',
-    age : apidata?.age || '',
-    gender : apidata?.gender || ''
+    name : uselocation.state?.name || '',
+    age : uselocation.state?.age || '',
+    gender : uselocation.state?.gender || ''
   })
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -33,7 +35,7 @@ setupdatedata({...updatedata,[e.target.name]:e.target.value})
     e.preventDefault();
   
     try {
-      const response = await fetch(`https://crudcrud.com/api/e892cfd1f26c40f3876891e8c67ddef0/unicorns/${apidata._id}`, {
+      const response = await fetch(`https://crudcrud.com/api/caeab3327418480f81c57a25edf8d9d7/unicorns/${uselocation.state?._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedata),
@@ -79,6 +81,11 @@ setupdatedata({...updatedata,[e.target.name]:e.target.value})
     <FormControl>
       <Button variant="contained" color="primary" onClick={handleupdatesubmit}>
         Update User
+      </Button>
+    </FormControl>
+    <FormControl>
+    <Button variant="contained" color="primary" component={Link} to={'/view'}>
+        View User Again
       </Button>
     </FormControl>
     {success && (
