@@ -15,21 +15,25 @@ function Navbar() {
     <AppBar position="static">
       <Toolbar>
         <Grid container sx={{ placeItems: "center" }}>
-          <Grid item xs={2}>
+          <Grid item xs={1}>
             <Typography>
               <Link to="/">
                 CrudApp
               </Link>
             </Typography>
           </Grid>
-          <Grid item xs={4} />
-          <Grid xs={6}>
+      
+          <Grid xs={11}>
             <Tabs value={list} indicatorColor="primary" onChange={(e, val) => setlist(val)}>
               <Tab label={<Link to="/">Home</Link>} />
               <Tab label={<Link to="/add">Add User</Link>} />
               <Tab label={<Link to="/view">ViewUser</Link>} />
               <Tab label={<Link to="/view">Update User</Link>} />
               <Tab label={<Link to="/view">DeleteUser</Link>} />
+              <Tab label={<Link to="/addsession">Add-Session</Link>} />
+              <Tab label={<Link to="/view">View-Session</Link>} />
+              <Tab label={<Link to="/view">Update-Session</Link>} />
+              <Tab label={<Link to="/view">Delete-Session</Link>} />
             </Tabs>
           </Grid>
         </Grid>
